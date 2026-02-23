@@ -1,0 +1,13 @@
+{
+  "name": "openclaw-showcase",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build required'",
+    "start": "npx serve -s ."
+  },
+  "dependencies": {
+    "serve": "^14.2.0"
+  }
+}

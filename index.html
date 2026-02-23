@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw 用例中心 | 看看 OpenClaw 能做什么</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg: #0f0f23;
+            --card-bg: #1a1a2e;
+            --card-hover: #252542;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #22d3ee;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 20px 60px;
+            text-align: center;
+            background: radial-gradient(ellipse at top, #1e1b4b 0%, var(--bg) 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: var(--gradient);
+            opacity: 0.1;
+            filter: blur(100px);
+            border-radius: 50%;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        .hero h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 40px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        
+        /* Categories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 0 20px;
+            margin-bottom: 48px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Cards Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-title .icon {
+            font-size: 1.5rem;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            background: var(--card-hover);
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            border-radius: 12px;
+        }
+        
+        .tag.difficulty {
+            background: rgba(34, 211, 238, 0.2);
+            color: #22d3ee;
+        }
+        
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            margin: 40px 20px;
+        }
+        
+        .cta h2 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+        
+        .cta p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: transform 0.3s;
+        }
+        
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero-stats {
+                gap: 24px;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1><span>OpenClaw</span> 用例中心</h1>
+        <p>看看 OpenClaw 能做什么！自动化办公、数据抓取、社交媒体运营、定时任务... 这里有最实用的 AI Agent 应用案例</p>
+        
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-value">30+</div>
+                <div class="stat-label">精选用例</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">8</div>
+                <div class="stat-label">应用分类</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">免费</div>
+                <div class="stat-label">开源可用</div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="categories">
+        <button class="category-btn active" data-category="all">全部</button>
+        <button class="category-btn" data-category="office">办公自动化</button>
+        <button class="category-btn" data-category="data">数据抓取</button>
+        <button class="category-btn" data-category="social">社交媒体</button>
+        <button class="category-btn" data-category="dev">开发工具</button>
+        <button class="category-btn" data-category="life">生活助手</button>
+    </div>
+    
+    <div class="container">
+        <!-- 办公自动化 -->
+        <h2 class="section-title"><span class="icon">📊</span> 办公自动化</h2>
+        <div class="cards-grid">
+            <div class="card" data-category="office">
+                <div class="card-icon">📧</div>
+                <div class="card-title">邮件自动处理</div>
+                <div class="card-desc">自动收邮件、分类、汇总周报、定时发送通知，告别手动回复</div>
+                <div class="card-tags">
+                    <span class="tag">定时执行</span>
+                    <span class="tag difficulty">⭐ 中级</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="office">
+                <div class="card-icon">📝</div>
+                <div class="card-title">会议纪要生成</div>
+                <div class="card-desc">自动整理会议要点，生成待办事项，提醒参与者跟进</div>
+                <div class="card-tags">
+                    <span class="tag">文档处理</span>
+                    <span class="tag difficulty">⭐⭐ 中高级</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="office">
+                <div class="card-icon">📋</div>
+                <div class="card-title">Excel/表格自动化</div>
+                <div class="card-desc">自动统计数据、生成报表、定时同步数据到云端</div>
+                <div class="card-tags">
+                    <span class="tag">数据处理</span>
+                    <span class="tag difficulty">⭐⭐ 中高级</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="office">
+                <div class="card-icon">🔔</div>
+                <div class="card-title">智能提醒助手</div>
+                <div class="提醒任务、会议、生日，支持多渠道推送（微信、card-desc">定时飞书、Slack）</div>
+                <div class="card-tags">
+                    <span class="tag">定时任务</span>
+                    <span class="tag difficulty">⭐ 入门</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 数据抓取 -->
+        <h2 class="section-title"><span class="icon">🕸️</span> 数据抓取 & 监控</h2>
+        <div class="cards-grid">
+            <div class="card" data-category="data">
+                <div class="card-icon">🔍</div>
+                <div class="card-title">竞品监控</div>
+                <div class="card-desc">监控竞争对手价格、新品、活动，及时获取市场动态</div>
+                <div class="card-tags">
+                    <span class="tag">网页监控</span>
+                    <span class="tag difficulty">⭐⭐ 中级</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="data">
+                <div class="card-icon">📰</div>
+                <div class="card-title">新闻资讯聚合</div>
+                <div class="card-desc">定时抓取行业新闻，生成每日简报，推送到群或邮箱</div>
+                <div class="card-tags">
+                    <span class="tag">内容聚合</span>
+                    <span class="tag difficulty">⭐⭐ 中级</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="data">
+                <div class="card-icon">📈</div>
+                <div class="card-title">舆情监控</div>
+                <div class="card-desc">监控品牌关键词在社交媒体的提及，及时预警负面信息</div>
+                <div class="card-tags">
+                    <span class="tag">社交监控</span>
+                    <span class="tag difficulty">⭐⭐⭐ 高级</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="data">
+                <div class="card-icon">🖼️</div>
+                <div class="card-title">网页截图定时巡检</div>
+                <div class="card-desc">定时截取网页/仪表盘，记录关键页面变化</div>
+                <div class="card-tags">
+                    <span class="tag">浏览器</span>
+                    <span class="tag difficulty">⭐ 入门</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 社交媒体 -->
+        <h2 class="section-title"><span class="icon">📱</span> 社交媒体运营</h2>
+        <div class="cards-grid">
+            <div class="card" data-category="social">
+                <div class="card-icon">🌸</div>
+                <div class="card-title">小红书自动发布</div>
+                <div class="card-desc">定时发布笔记、自动回复评论、批量处理多账号</div>
+                <div class="card-tags">
+                    <span class="tag">内容发布</span>
+                    <span class="tag difficulty">⭐⭐ 中级</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="social">
+                <div class="card-icon">🐦</div>
+                <div class="card-title">Twitter/X 自动运营</div>
+                <div class="card-desc">定时发推、自动转评赞、追踪热门话题、分析账号数据</div>
+                <div class="card-tags">
+                    <span class="tag">内容运营</span>
+                    <span class="tag difficulty">⭐⭐ 中级</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="social">
+                <div class="card-icon">💬</div>
+                <div class="card-title">客服机器人</div>
+                <div class="card-desc">自动回复常见问题，收集用户反馈，转接人工处理</div>
+                <div class="card-tags">
+                    <span class="tag">自动回复</span>
+                    <span class="tag difficulty">⭐⭐ 中级</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="social">
+                <div class="card-icon">📊</div>
+                <div class="card-title">社交媒体数据分析</div>
+                <div class="card-desc">自动汇总各平台数据，生成周报/日报，分析趋势</div>
+                <div class="card-tags">
+                    <span class="tag">数据分析</span>
+                    <span class="tag difficulty">⭐⭐⭐ 高级</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 开发工具 -->
+        <h2 class="section-title"><span class="icon">💻</span> 开发 & DevOps</h2>
+        <div class="cards-grid">
+            <div class="card" data-category="dev">
+                <div class="card-icon">🤖</div>
+                <div class="card-title">GitHub 自动化</div>
+                <div class="card-desc">自动追踪 Issue、PR，定时汇总项目状态，部署触发器</div>
+                <div class="card-tags">
+                    <span class="tag">CI/CD</span>
+                    <span class="tag difficulty">⭐⭐ 中级</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="dev">
+                <div class="card-icon">🐛</div>
+                <div class="card-title">Bug 追踪助手</div>
+                <div class="card-desc">自动收集错误日志、生成 Bug 报告、分配给对应开发者</div>
+                <div class="card-tags">
+                    <span class="tag">监控</span>
+                    <span class="tag difficulty">⭐⭐⭐ 高级</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="dev">
+                <div class="card-icon">☁️</div>
+                <div class="card-title">服务器定时巡检</div>
+                <div class="card-desc">定时检查服务器状态、监控资源使用、自动告警</div>
+                <div class="card-tags">
+                    <span class="tag">运维</span>
+                    <span class="tag difficulty">⭐⭐ 中级</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="dev">
+                <div class="card-icon">📦</div>
+                <div class="card-title">AI 代码助手</div>
+                <div class="card-desc">集成 Claude/GPT 接口，提供代码审查、文档生成等能力</div>
+                <div class="card-tags">
+                    <span class="tag">AI</span>
+                    <span class="tag difficulty">⭐⭐⭐ 高级</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 生活助手 -->
+        <h2 class="section-title"><span class="icon">🏠</span> 生活助手</h2>
+        <div class="cards-grid">
+            <div class="card" data-category="life">
+                <div class="card-icon">🛒</div>
+                <div class="card-title">比价助手</div>
+                <div class="card-desc">监控商品价格变化，一键发送优惠提醒到群</div>
+                <div class="card-tags">
+                    <span class="tag">生活</span>
+                    <span class="tag difficulty">⭐ 入门</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="life">
+                <div class="card-icon">🌤️</div>
+                <div class="card-title">天气/出行提醒</div>
+                <div class="card-desc">每天早上推送天气，提醒带伞/穿衣，恶劣天气预警</div>
+                <div class="card-tags">
+                    <span class="tag">提醒</span>
+                    <span class="tag difficulty">⭐ 入门</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="life">
+                <div class="card-icon">📚</div>
+                <div class="card-title">阅读/学习提醒</div>
+                <div class="card-desc">定时推送学习内容、英语单词、读书笔记</div>
+                <div class="card-tags">
+                    <span class="tag">学习</span>
+                    <span class="tag difficulty">⭐ 入门</span>
+                </div>
+            </div>
+            
+            <div class="card" data-category="life">
+                <div class="card-icon">💪</div>
+                <div class="card-title">健康打卡监督</div>
+                <div class="card-desc">定时提醒喝水、运动、打卡，统计健康数据</div>
+                <div class="card-tags">
+                    <span class="tag">健康</span>
+                    <span class="tag difficulty">⭐ 入门</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA -->
+        <section class="cta">
+            <h2>🚀 想试试这些用例？</h2>
+            <p>OpenClaw 是免费开源的 AI Agent 框架，<br>现在就可以开始搭建你的第一个自动化助手</p>
+            <a href="https://github.com/openclaw/openclaw" target="_blank" class="cta-btn">GitHub 查看源码 →</a>
+        </section>
+    </div>
+    
+    <footer>
+        <p>OpenClaw 用例中心 | 由 OpenClaw AI Agent 驱动</p>
+        <p><a href="https://github.com/openclaw/openclaw">GitHub</a> · <a href="https://docs.openclaw.ai">文档</a> · <a href="https://discord.com/invite/clawd">社区</a></p>
+    </footer>
+    
+    <script>
+        // Category filter
+        const btns = document.querySelectorAll('.category-btn');
+        const cards = document.querySelectorAll('.card');
+        
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                btns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const category = btn.dataset.category;
+                
+                // Filter cards
+                cards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
