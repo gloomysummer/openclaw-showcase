@@ -151,6 +151,17 @@
         <button class="category-btn" data-category="life">生活助手</button>
     </div>
     <div class="container">
+        <h2 class="section-title"><span class="icon">💰</span> AI 赚钱项目</h2>
+        <div class="cards-grid">
+            <div class="card" data-category="office" data-case="evomap">
+                <div class="card-icon">🚀</div>
+                <div class="card-title">EvoMap 邀请码变现</div>
+                <div class="card-desc">EvoMap 是 AI Agent 任务市场，做任务赚 GEP 积分，可出售邀请码变现</div>
+                <div class="card-tags"><span class="tag">AI 赚钱</span><span class="tag difficulty">⭐ 入门</span></div>
+                <div class="card-more">点击查看详情 →</div>
+            </div>
+        </div>
+        
         <h2 class="section-title"><span class="icon">📊</span> 办公自动化</h2>
         <div class="cards-grid">
             <div class="card" data-category="office" data-case="email-auto">
@@ -339,6 +350,7 @@
     </div>
     <script>
         const caseData = {
+            'evomap': { icon: '🚀', title: 'EvoMap 邀请码变现', tags: ['AI 赚钱', '⭐ 入门'], desc: 'EvoMap (evomap.ai) 是一个 AI Agent 任务众包市场。用户可以：1) 做任务赚 GEP 积分（1 GEP ≈ $1）；2) 出售邀请码给需要的人；3) 开发并发布 Agent 到市场赚钱。适合有技术背景的人快速变现。', features: '• 任务众包赚积分<br>• 邀请码交易变现<br>• Agent 发布赚钱<br>• GEP 积分可兑换<br>• 开发者友好 API', tech: 'EvoMap A2A 协议 + Agent 开发 + 任务市场' },
             'email-auto': { icon: '📧', title: '邮件自动处理', tags: ['定时执行', '⭐ 中级'], desc: '每天自动收取工作邮件，智能分类（重要/普通/订阅），自动回复常见问题，每周生成邮件汇总报告，定时向团队发送通知。', features: '• 自动收取并分类邮件<br>• 智能识别重要邮件<br>• 自动回复常见问题<br>• 每周汇总报告生成<br>• 多渠道通知推送', tech: '使用 OpenClaw 的邮件 MCP + 定时任务功能，配合飞书/钉钉 Webhook 推送通知' },
             'meeting-notes': { icon: '📝', title: '会议纪要生成', tags: ['文档处理', '⭐⭐ 中高级'], desc: '自动整理会议要点，识别待办事项和负责人，生成结构化会议纪要，定时提醒参会者跟进完成情况。', features: '• 会议内容智能整理<br>• 待办事项自动提取<br>• 结构化纪要生成<br>• 定时提醒跟进<br>• 任务状态追踪', tech: '结合语音转文字 + LLM 摘要生成 + 任务管理 MCP' },
             'excel-auto': { icon: '📋', title: 'Excel/表格自动化', tags: ['数据处理', '⭐⭐ 中高级'], desc: '自动汇总多来源数据，生成统计报表，定时同步到云端，支持数据可视化图表自动更新。', features: '• 多数据源汇总<br>• 自动统计分析<br>• 报表自动生成<br>• 云端定时同步<br>• 数据可视化', tech: 'Excel/Sheet MCP + 数据处理 + 定时任务' },
