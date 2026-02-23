@@ -1,6 +1,5 @@
 {
   "buildCommand": "echo 'No build required'",
-  "outputDirectory": ".",
-  "installCommand": "npm install",
-  "framework": null
+  "outputDirectory": "public",
+  "installCommand": "npm install"
 }
